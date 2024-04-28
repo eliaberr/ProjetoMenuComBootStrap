@@ -1,7 +1,12 @@
 $("#telefone").mask("(99) 9999-99999");
 
+
+
 function calc(){
-    
+    const myModal = document.getElementById('myModal')
+    const myInput = new bootstrap.Modal(myModal);
+    myInput.show();
+
     total = 0
 
     bifeComBatata = document.getElementById("bifeComBatata").value
@@ -18,11 +23,7 @@ function calc(){
     nome = document.getElementById("nome").value
     email = document.getElementById("email").value
 
-    saida.innerHTML = "";
-
-    saida.innerHTML += `<p>Caro ${nome}</p>  <p>Segue os Dados do Seu Pedido.</p>
-    <p>O Seu pedido é </p> 
-    <ul>`;
+    saida.innerHTML = `<p>Segue os Dados do Seu Pedido.</p>`;
 
     if (bifeComBatata > 0) {
         saida.innerHTML += `<li>Prato: Bife Com Batata - Preço Unitário: R$ 30,00 - Quantidade: ${bifeComBatata} - Total: R$ ${30 * bifeComBatata},00</li>`;
@@ -55,9 +56,12 @@ function calc(){
     }
     
     if (total == 0) {
-        saida.innerHTML += `<h2>Voçê Não escolheu o seu Pedido</h2></ul>`;
+        saida.innerHTML += `<h2 class="text-danger">Voçê Não escolheu o seu Pedido</h2></ul>`;
     }else{
-        saida.innerHTML += `<h2>Preço Final: R$${total},00</h2></ul>`;
+        saida.innerHTML += `<p class="mt-5">Caro ${nome}</p>  
+        <p>O Seu pedido foi Realizado </p> 
+        <ul>`;
+        saida.innerHTML += `<h2 class="text-success">Preço Final: R$${total},00</h2></ul>`;
     }
 
     
